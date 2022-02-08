@@ -1,0 +1,49 @@
+        {% extends 'base.html.twig'%}
+
+        {% block main%}
+
+        <div class="jumbotron text-center">
+        <h1><p>Liste des articles</p></h1>
+
+        </div>
+
+
+        {% if articles is not empty %}
+        <table class="table">
+        <thead class="thead-dark">
+        <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+        <th scope="col">Cover</th>
+        <th scope="col">Date De Création</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        </tr>
+        </thead>
+        {% for article in articles %}
+        <tr>
+        <td>{{ article.id }}</td>
+        <td><a href="{{path('article_view',{id:article.id})}}">{{article.title }}</a></td>
+        <td>{{ article.content| slice(0, 20) }}</td>
+        <td><img src="/uploads/article_image/{{article.cover}}" height="55" width="42" ></img></td>
+        <td>{% if  article.getDateCreate %} {{  article.getDateCreate|date('Y-m-d') }} {% endif %}</td>
+        {# <td><a href="delete-article/{{ article.id }}">Delete</a></td> #}
+        <td><a href="{{path('article_delete',{id:article.id})}}">Supprimer</a></td>
+        {# <td><a href="update-article/{{ article.id }}">Update</a></td> #}
+        <td><a href="{{path('article_edit',{id:article.id})}}">Modifier</a></td>
+
+        </tr>
+
+        {% endfor %}
+        </tbody>
+
+        </table>
+        {% else %}
+        <p>No article found.</p>
+        {% endif %}
+        <a href="{{path('article')}}">Retour</a>
+        </body>
+        </html>
+
+        {% endblock %}

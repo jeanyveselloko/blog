@@ -1,0 +1,12 @@
+{% extends 'base.html.twig'%}
+
+{% block main%}
+        <div class="jumbotron text-center">
+        <h1><p>Modifier article</p></h1>
+
+        </div>
+{{ form(form) }}{#  à commenter pour tester formulaire #}
+
+<a href="{{path('articles_all')}}">Voir tous les articles</a>
+
+{% endblock %}

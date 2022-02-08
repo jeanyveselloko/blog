@@ -1,0 +1,13 @@
+{# templates/client/client.html.twig à commenter pour tester formulaire #}
+{% extends 'base.html.twig'%}
+
+{% block main%}
+        <div class="jumbotron text-center">
+        <h1><p>Ajout d'articles</p></h1>
+
+        </div>
+{{ form(form) }}{#  à commenter pour tester formulaire #}
+
+<a href="{{path('articles_all')}}">Voir tous les articles</a>
+
+{% endblock %}
